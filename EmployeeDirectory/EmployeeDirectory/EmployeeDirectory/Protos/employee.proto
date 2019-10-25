@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "EmployeeDirectoryServer.Protos";
+
+service EmployeeRequests {
+  // Sends a greeting
+  rpc GetEmployees (google.protobuf.Empty) returns (EmployeeListResponse);
+}
+
+message Employee {
+	int32 employee_id = 1;
+	string full_name = 2;
+	string profile_picture_url = 3;
+	string employee_title = 4;
+}
+
+message EmployeeListResponse {
+	repeated Employee employee = 1;
+}
+

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             mc:Ignorable="d"
+             x:Class="EmployeeDirectory.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <CollectionView ItemsSource="{Binding EmployeeList}"
+                        Margin="15">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HeightRequest="100"
+                            Margin="0, 0, 0, 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ffimageloading:CachedImage HorizontalOptions="Center" 
+                                                    VerticalOptions="Center"
+			                                        WidthRequest="50" 
+                                                    HeightRequest="50"
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    Grid.Column="0"
+			                                        DownsampleToViewSize="true"
+			                                        Source = "http://loremflickr.com/600/600/nature?filename=simple.jpg">
+                        </ffimageloading:CachedImage>
+
+                        <Label Text="{Binding FullName}"
+                               FontSize="18"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               VerticalOptions="Center"/>
+                        
+                        <Label Text="{Binding EmployeeTitle}"
+                               FontSize="14"
+                               Grid.Row="1"
+                               Grid.Column="1"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
